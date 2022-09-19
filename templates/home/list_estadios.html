@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}listestadios{% endblock %}
+{% block content %}
+<header>
+  <section class="wrapper">
+		<nav>
+			<ul>
+				<li><a href="{% url 'list' %}" >Equipos</a></li>
+				<li><a href="{% url 'list_jugadores' %}" >Jugadores</a></li>
+				<li><a href="{% url 'list_estadios' %}" >Estadios</a></li>
+		
+			</ul>
+    </nav>
+    </section>
+</header>
+<section id="section2">
+  <h1> TABLA ESTADIOS</h1>
+  <table class="table text-center" >
+       
+    
+    <thead class="table-dark ">
+        
+       <tr>
+           <th scope="col">#</th>
+
+           <th scope="col">Name</th>
+           
+           <th scope="col"></th>
+
+           
+         </tr>
+   </thead>
+   <tbody >
+       
+       
+            {% for estadios in list_estadios %}
+           
+            
+               <tr>
+                     <td>  {{estadios.id}}</td>
+
+                     <td>  {{estadios.nombre_estadio}}</td>
+                     <div>
+                      <td id = "botones" >
+                     
+                        <a  href="{% url 'detail_estadios' estadios.id %}"  class="btn btn-success btn-sm ">Retrive</a>
+                        <a  href="{% url 'update_estadios' estadios.id %}"  class="btn btn-warning  btn-sm">Update</a>
+                        <a  href="{% url 'delete_estadios' estadios.id %}"  class="btn btn-danger  btn-sm">Delete</a>
+                      
+  
+  
+                       </td>
+
+
+                     </div>
+   
+                    
+   
+   
+               </tr>
+           
+           {% endfor %}
+
+   </tbody>
+</table>
+<a href="{% url 'create_estadios' %}" class="btn btn-primary  btn-lg">Create</a>
+
+
+
+{% endblock %}
+

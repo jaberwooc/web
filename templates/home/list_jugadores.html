@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}listestadios{% endblock %}
+{% block content %}
+<header>
+  <section class="wrapper">
+		<nav>
+			<ul>
+				<li><a href="{% url 'list' %}" >Equipos</a></li>
+				<li><a href="{% url 'list_jugadores' %}" >Jugadores</a></li>
+				<li><a href="{% url 'list_estadios' %}" >Estadios</a></li>
+		
+			</ul>
+    </nav>
+    </section>
+</header>
+<section id="section2">
+  <h1> TABLA JUGADORES</h1>
+  <table class="table text-center" >
+       
+    
+    <thead class="table-dark ">
+        
+       <tr>
+           <th scope="col">#</th>
+
+           <th scope="col">full name</th>
+           <th scope="col">Team</th>
+
+           
+           <th scope="col"></th>
+
+           
+         </tr>
+   </thead>
+   <tbody >
+       
+       
+            {% for jugadores in list_jugadores %}
+           
+            
+               <tr>
+                     <td>  {{jugadores.id}}</td>
+
+                     <td>  {{jugadores.fullname}}</td>
+                     <td>  {{jugadores.equipo}}</td>
+
+                     <div>
+                      <td id = "botones" >
+                     
+                        <a  href="{% url 'detail_jugadores' jugadores.id %}"  class="btn btn-success btn-sm ">Retrive</a>
+                        <a  href="{% url 'update_jugadores' jugadores.id %}"  class="btn btn-warning  btn-sm">Update</a>
+                        <a  href="{% url 'delete_jugadores' jugadores.id %}"  class="btn btn-danger  btn-sm">Delete</a>
+                      
+  
+  
+                       </td>
+
+
+                     </div>
+   
+                    
+   
+   
+               </tr>
+           
+           {% endfor %}
+
+   </tbody>
+</table>
+<a href="{% url 'create_jugadores' %}" class="btn btn-primary  btn-lg">Create</a>
+
+
+
+{% endblock %}
+
